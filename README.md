@@ -1,5 +1,4 @@
-# loud_consistency
-Linked Open Usable Data (LOUD) Consistency
+# Linked Open Usable Data (LOUD) Consistency
 
 To do
 - [ ] IIIF (X) vs Linked Art (Y), against Xs implementation how consistent? Against Ys implementation - maybe PIA deliverable?
