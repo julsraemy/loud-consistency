@@ -6,7 +6,7 @@ Initiatlly, there were several ideas on how consistency of LOUD, namely IIIF and
 
 - Initial idea: IIIF (X) vs Linked Art (Y), against Xs implementation how consistent? Against Ys implementation
 
-Dropping Linked Art but focusing on IIIF Manifests V2.1 versus V3.0 against the [Presentation API Validator](https://presentation-validator.iiif.io/). For instance: Bodleian, Getty, Internet Archive (some of them have content negotiation implemented)
+Dropping Linked Art but focusing on IIIF Manifests V2.1 versus V3.0 against the [Presentation API Validator](https://presentation-validator.iiif.io/). For instance: Bodleian, Getty, Internet Archive (some of them have content negotiation implemented). Also how it relates to the cookbook recipes and which viewers support what. 
 
 ## LUX: Syntax
 
