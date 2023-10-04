@@ -1,40 +1,50 @@
 # Linked Open Usable Data (LOUD) Consistency
 
-Initiatlly, there were several ideas on how consistency of LOUD, namely IIIF and Linked Art data, could be checked. 
+Initiatlly, there were several ideas on how consistency of Linked Open Usable Data (LOUD), namely the [International Image Interoperability Framework](https://iiif.io) (IIIF) and [Linked Art](https://linked.art) data, could be checked. This repository is an attempt to document the various actions undertaken in the context of a PhD Thesis on [LOUD for Cultural Heritage](https://phd.julsraemy.ch) in terms of data validation and consistency.
 
-## IIIF Presentation API Resources
+## 1. IIIF Presentation API Resources
 
 - Initial idea: IIIF (X) vs Linked Art (Y), against Xs implementation how consistent? Against Ys implementation
 
 Dropping Linked Art but focusing on IIIF Manifests V2.1 versus V3.0 against the [Presentation API Validator](https://presentation-validator.iiif.io/). For instance: Bodleian, Getty, Internet Archive (some of them have content negotiation implemented). Also how it relates to the cookbook recipes and which viewers support what. 
 
-## LUX: Syntax
+## 2. LUX
 
-- Initial idea: Syntax against the Linked Art Schema Definitions - Linked Art specification <-> Data [Automatable] - 1/24th records (LUX), the highest number of parallel processes
+For the first action, a compressed slice of the LUX data has been provided. For the second and third action related purely to LUX, a CSV has been provided.
 
-The [Linked Art JSON Validator](https://github.com/linked-art/json-validator) will be leveraged. The `lux-schema-test.py` should be amended and used. 
+### Syntax
 
-## LUX: Unit to Unit (YCBA and YUAG)
+- Initial idea: Syntax against the Linked Art Schema Definitions - Linked Art specification <-> Data [Automatable] - 1/24th records (LUX), the highest number of parallel processes. The JSONL file can be extracted using `lux_jsonl_extractor.py`. See [lux-ectractor](lux-extractor/README.md).
 
-- Initial idea: Unit to unit consistency, e.g. YCBA & YUAG to check (same domain) [To some extent, first by hand with a couple of instances, then Activity Streams endpoints or thumb drives]
+The [Linked Art JSON Validator](https://github.com/linked-art/json-validator) will be leveraged. The `lux-schema-test.py` should be amended so it can parse several links or JSON-LD files. 
 
-Rob will provide a CSV
+### Unit to Unit (YCBA and YUAG)
 
-## LUX versus Getty Vocabularies
+- Initial idea: Unit to unit consistency, e.g. YCBA & YUAG to check (same domain). To some extent, first by hand with a couple of instances, then Activity Streams endpoints or thumb drives.
+
+### LUX versus Getty Vocabularies
 
 - Initial idea: LUX <-> external Linked Art that have the same concepts, that would be the Getty JSON-LD representation of the AAT, ULAN, TGN [To some extent, first by hand with a couple of instances]
 
-Rob will provide a CSV, then find 
+## 3. Linked Art Model
 
-##  Linked Art Model
-
-- Initial idea: Model consistency with LUX, O'Keeffee, Getty (museum data and vocabularies), Rijksmuseum. Some of the interesting patterns: `Primary Name`, `Exhibition`, `Material Statement`, `Provenance Statement`
+- Initial idea: Model consistency with LUX, O'Keeffee, Getty (museum data and vocabularies), Van Gogth Worldwide, Rijksmuseum. Some of the interesting patterns: `Primary Name`, `Exhibition`, `Material Statement`, `Provenance Statement`
 
 Out of scope for the moment in terms of robust model consistency (because there are way too dissimilar) check but needs to be part of the PhD can I can "call them out" in terms of what these instutions have done, why it was modelled like this and the next steps. 
 
-Collections: 
+## Collections
 
-- LUX
+### IIIF 
+
+See https://guides.iiif.io/ and target institutions that have implemented both the IIIF Presentation API 2.1 and 3.0.
+
+### Linked Art
+
+The following collections or datasets use slightly different versions and have extensions to be ratified or replaced. The Rijksmuseum dump has also been serialised in Turtle rather than in JSON-LD.
+
+- [LUX](https://lux.collections.yale.edu/)
 - [The Art and Life of Georgia O’Keeffe](https://collections.okeeffemuseum.org/)
-- Getty
+- [Getty Museum Collection](https://data.getty.edu/museum/collection/docs/)
+- [Getty Vocabularies](https://www.getty.edu/research/tools/vocabularies/)
+- [Van Gogh Worldwide](https://vangoghworldwide.org/)
 - [Rijksmuseum](https://data.rijksmuseum.nl/object-metadata/download/)
