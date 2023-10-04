@@ -1,6 +1,6 @@
 # LUX JSONL Data Extractor
 
-This script processes a JSONL file and creates output files based on the specified parameters. It can extract a specified number of lines, a specified line range, or all lines from a JSONL file. Additionally, it can save entries as individual JSON files.
+This script processes a JSONL file and creates output files based on the specified parameters. It can extract a specified number of lines, a specified line range, or all lines from a JSONL file and save the main `id`, i.e. the LUX URI pointing to a given Linked Art object, in txt files (each 10,000 entries a new file is generated). Additionally, it can save entries as individual JSON files.
 
 ## Usage
 
