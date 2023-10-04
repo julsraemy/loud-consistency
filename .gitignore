@@ -1,4 +1,4 @@
 .DS_Store
 *.jsonl
-lux/
+02_lux/units/
 lux-extractor/data/
