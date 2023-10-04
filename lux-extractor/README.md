@@ -9,7 +9,7 @@ This script processes a JSONL file and creates output files based on the specifi
 python3 lux_jsonl_extractor.py [options]
 ```
 
-## Options
+## Options
 
 - `-i, --input_file <file_path>`: Path to the input JSONL file (required).
 - `-r, --line_range <start-end>`: Range of lines to process (start-end) or a single line (e.g., `240-800` or `259`). Use `-r` to process from a specific line until the end of the file.
