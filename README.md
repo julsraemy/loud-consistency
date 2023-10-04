@@ -8,7 +8,7 @@ Initiatlly, there were several ideas on how consistency of Linked Open Usable Da
 
 Dropping Linked Art but focusing on IIIF Manifests V2.1 versus V3.0 against the [Presentation API Validator](https://presentation-validator.iiif.io/). For instance: Bodleian, Getty, Internet Archive (some of them have content negotiation implemented). Also how it relates to the cookbook recipes and which viewers support what. 
 
-## 2. LUX
+## 2. LUX, Yale Collections Discovery
 
 For the first action, a compressed slice of the LUX data has been provided. For the second and third action related purely to LUX, a CSV has been provided.
 
