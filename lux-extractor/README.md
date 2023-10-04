@@ -10,10 +10,10 @@ python3 lux_jsonl_extractor.py [options]
 
 ## Options
 
-`-i, --input_file <file_path>`: Path to the input JSONL file (required).
-`-r, --line_range <start-end>`: Range of lines to process (start-end) or a single line (e.g., `240-800` or `259`). Use `-r start-` to process from a specific line until the end of the file.
-`-n, --num_lines <num>`: Number of lines to process. Default is to process all available lines.
-`-j, --json_output`: Save entries as JSON files.
+- `-i, --input_file <file_path>`: Path to the input JSONL file (required).
+- `-r, --line_range <start-end>`: Range of lines to process (start-end) or a single line (e.g., `240-800` or `259`). Use `-r start-` to process from a specific line until the end of the file.
+- `-n, --num_lines <num>`: Number of lines to process. Default is to process all available lines.
+- `-j, --json_output`: Save entries as JSON files.
 
 Please note that `-r` and `-n` can't be used together.
 
