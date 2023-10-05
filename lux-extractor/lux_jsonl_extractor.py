@@ -51,8 +51,8 @@ def process_entries(input_file_path, line_range, num_lines_to_read, save_json=Fa
             main_ids.append(main_id)
             current_lines += 1
 
-            if current_lines > 10000:
-                # Write current main IDs to the text file
+            if current_lines > 100000:
+                # Write current main IDs to the text file. One file per 100,000 entries
                 start_idx = idx - current_lines + 1 if line_range else idx - current_lines + 2
                 end_idx = idx if line_range else idx + 1
                 lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.txt')
