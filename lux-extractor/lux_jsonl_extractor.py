@@ -46,6 +46,10 @@ def process_entries(input_file_path, line_range, num_lines_to_read, save_json=Fa
 
             data = json.loads(line)
             main_id = data['json']['id']
+            data['json']['id'] = main_id  # Set the first ID as the main ID
+
+            # Get the content of the first ID to use as the file name
+            first_id_content = main_id.split('/')[-1]
 
             # Always save the main IDs
             main_ids.append(main_id)
@@ -65,28 +69,12 @@ def process_entries(input_file_path, line_range, num_lines_to_read, save_json=Fa
                 current_lines = 0
                 file_index += 1
 
-        # Write remaining main IDs to the text file
-        if main_ids:
-            start_idx = idx - current_lines + 1 if line_range else idx - current_lines + 2
-            end_idx = idx if line_range else idx + 1
-            lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.txt')
-            with open(lux_ids_file_path, 'w', encoding='utf-8') as lux_ids_output_file:
-                for main_id in main_ids:
-                    lux_ids_output_file.write(main_id + '\n')
-
-    print(f"Successfully processed {current_lines} lines.")
-
-    if save_json:
-        # Save entries as JSON files
-        for idx, main_id in enumerate(main_ids):
-            data = json.loads(line)
-            subdirectory = os.path.join(output_directory, main_id.split('/')[-2])
-            os.makedirs(subdirectory, exist_ok=True)
-
             # Create the JSON file for the entry
-            output_file_path = os.path.join(subdirectory, f'{main_id.split("/")[-1]}.json')
+            output_file_path = os.path.join(output_directory, f'{first_id_content}.json')
             with open(output_file_path, 'w', encoding='utf-8') as output_file:
                 json.dump(data, output_file, indent=4)
+
+    print(f"Successfully processed {current_lines} lines.")
 
 if __name__ == "__main__":
     args = parse_arguments()
