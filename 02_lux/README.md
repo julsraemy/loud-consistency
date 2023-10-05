@@ -2,7 +2,24 @@
 
 ## Testing the Linked Art JSON Validator
 
+### Concept
+
+#### Linked Art Endpoint
+
+#### LUX
+
+- https://lux.collections.yale.edu/data/concept/000052b6-a350-4bcb-afca-15dceb72920a
+
+```bash
+-----
+Processing: https://lux.collections.yale.edu/data/concept/000052b6-a350-4bcb-afca-15dceb72920a
+  Validated!
+```
+
 ### Textual Work
+
+- Documentation: https://linked.art/api/1.0/endpoint/textual_work/
+- Schema: https://linked.art/api/1.0/schema/text.json 
 
 #### Linked Art Endpoint
 
@@ -16,3 +33,20 @@ Processing: https://linked.art/example/text/0.json
 
 #### LUX
 
+- https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18
+
+```bash
+
+-----
+Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18
+  /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:14996707', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
+```
+
+- https://lux.collections.yale.edu/data/text/00001cef-e016-418e-ba8d-84d2375d663a
+
+```bash
+-----
+Processing: https://lux.collections.yale.edu/data/text/00001cef-e016-418e-ba8d-84d2375d663a
+  Validated!
+
+```
