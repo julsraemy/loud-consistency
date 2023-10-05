@@ -59,26 +59,39 @@ python3 lux_jsonl_extractor.py -i export_full_0.jsonl -n 100
 
 One LUX JSONL represents one 24th of the whole LUX dataset. The JSON files are also not exactly the same as what is available online through the API and are much more verbose. 
 
-Compare `https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18` with: 
+Compare the last few lines of  `https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c` with: 
 
 ```json
 {
     "json": {
-        "id": "https://lux.collections.yale.edu/data/person/0000113d-3239-4cc7-a277-f4e701cb3255",
-        "type": "Person",
-        "_label": "Lovy, Alex",
+        "id": "https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c",
+        "type": "Type",
+        "_label": "Ichthyosauridae",
+        "broader": [
+            {
+                "id": "https://lux.collections.yale.edu/data/concept/de045f98-864b-4814-8baa-10fab96cf58a",
+                "type": "Type"
+            }
+        ],
         "@context": "https://linked.art/ns/v1/linked-art.json",
         "equivalent": [
             {
-                "id": "https://linked-art.library.yale.edu/node/dff3c65b-9162-408d-9aac-7f4456a7d586",
-                "type": "Person",
-                "_label": "Lovy, Alex"
+                "id": "http://id.loc.gov/authorities/subjects/sh85064057",
+                "type": "Type",
+                "_label": "Ichthyosauridae"
             }
         ],
         "identified_by": [
             {
                 "type": "Name",
-                "content": "Lovy, Alex",
+                "content": "Ichthyosauridae",
+                "language": [
+                    {
+                        "id": "https://lux.collections.yale.edu/data/concept/1fda962d-1edc-4fd7-bfa9-0c10e3153449",
+                        "type": "Language",
+                        "_label": "English"
+                    }
+                ],
                 "classified_as": [
                     {
                         "id": "https://lux.collections.yale.edu/data/concept/f7ef5bb4-e7fb-443d-9c6b-371a23e717ec",
@@ -97,23 +110,30 @@ Compare `https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41
     "triples": [
         {
             "triple": {
-                "subject": "https://lux.collections.yale.edu/data/person/0000113d-3239-4cc7-a277-f4e701cb3255",
+                "subject": "https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c",
                 "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                "object": "http://www.cidoc-crm.org/cidoc-crm/E21_Person"
+                "object": "http://www.cidoc-crm.org/cidoc-crm/E55_Type"
             }
         },
         {
             "triple": {
-                "subject": "https://lux.collections.yale.edu/data/person/0000113d-3239-4cc7-a277-f4e701cb3255",
+                "subject": "https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c",
                 "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-                "object": "https://lux.collections.yale.edu/ns/Agent"
+                "object": "https://lux.collections.yale.edu/ns/Concept"
             }
         },
         {
             "triple": {
-                "subject": "https://lux.collections.yale.edu/data/person/0000113d-3239-4cc7-a277-f4e701cb3255",
+                "subject": "https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c",
                 "predicate": "https://linked.art/ns/terms/equivalent",
-                "object": "https://linked-art.library.yale.edu/node/dff3c65b-9162-408d-9aac-7f4456a7d586"
+                "object": "http://id.loc.gov/authorities/subjects/sh85064057"
+            }
+        },
+        {
+            "triple": {
+                "subject": "https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c",
+                "predicate": "http://www.w3.org/2004/02/skos/core#broader",
+                "object": "https://lux.collections.yale.edu/data/concept/de045f98-864b-4814-8baa-10fab96cf58a"
             }
         }
     ],
@@ -121,19 +141,13 @@ Compare `https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41
         "conversion-date": "2023-04-27T20:58:58.421062"
     },
     "indexedProperties": {
-        "dataType": "Person",
-        "uiType": "Agent",
+        "dataType": "Type",
+        "uiType": "Concept",
         "isCollectionItem": 0,
-        "nationalityId": [],
-        "occupationId": [],
-        "agentActivePlaceId": [],
-        "personId": "https://lux.collections.yale.edu/data/person/0000113d-3239-4cc7-a277-f4e701cb3255",
-        "genderId": [],
         "hasDigitalImage": 0,
         "isOnline": 0
     }
 }
-
 ```
 
 
