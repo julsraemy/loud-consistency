@@ -3,6 +3,7 @@ import json
 import argparse
 import requests
 import warnings
+import csv
 from referencing import Registry, Resource
 from jsonschema import validate, Draft202012Validator
 from jsonschema.exceptions import ValidationError
@@ -23,66 +24,68 @@ def validate_json(json_data, schema):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate JSON data against a schema.")
-    parser.add_argument("-i", "--instance", type=str, required=True, help="Instance URL for validation")
-    parser.add_argument("-s", "--schema", type=str, required=True, choices=["core", "concept", "digital", "event", "group", "image", "object", "place", "person", "provenance", "set", "text"], help="Schema to validate against")
+    parser.add_argument("-f", "--file", type=str, required=True, help="Path to the file containing URLs to validate")
     
     args = parser.parse_args()
 
     # Load the core schema and resolve references
     schema_dir = "schema"
-    core_schema_contents = load_json_from_file(os.path.join(schema_dir, "core.json"))
-    core_schema = Resource.from_contents(core_schema_contents)
-    core_registry = Registry().with_resources([
-        ("https://linked.art/api/1.0/schema/core.json", core_schema),
-        ("core.json", core_schema)
-    ])
 
-    schema_file_mapping = {
-        "core": "core.json",
-        "concept": "concept.json",
-        "digital": "digital.json",
-        "event": "event.json",
-        "group": "group.json",
-        "image": "image.json",
-        "object": "object.json",
-        "place": "place.json",
-        "person": "person.json",
-        "provenance": "provenance.json",
-        "set": "set.json",
-        "text": "text.json"
-    }
+    # Read URLs from the file
+    with open(args.file, 'r') as file:
+        urls = file.readlines()
 
-    if args.schema not in schema_file_mapping:
-        print("Invalid schema specified.")
-        exit(1)
+    # Initialize a dictionary to store validation results
+    validation_results = []
 
-    specified_schema_contents = load_json_from_file(os.path.join(schema_dir, schema_file_mapping[args.schema]))
-    specified_schema = Resource.from_contents(specified_schema_contents)
+    # Dictionary to store schema validation counts
+    schema_validation_counts = {}
 
-    # Merge the core and specified schemas
-    merged_schema = merge_schemas(core_schema_contents, specified_schema_contents)
+    # Process each URL
+    for url in urls:
+        url = url.strip()
+        schema_name = url.split('/')[-2]  # Extract schema name from URL
 
-    # Load the instance data
-    instance = args.instance
-    resp = requests.get(instance)
-    data = resp.json()
+        # Load the specified schema
+        schema_file_path = os.path.join(schema_dir, f"{schema_name}.json")
+        specified_schema_contents = load_json_from_file(schema_file_path)
 
-    print("-"*120)
-    print("Processing: %s" % instance)
-    
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
-        errs = validate_json(data, merged_schema)
+        # Merge the core and specified schemas
+        merged_schema = merge_schemas(specified_schema_contents)
 
-    for error in errs:
-        if error.validator == 'additionalProperties':
-            aps = []
-            for ap in find_additional_properties(error.instance, error.schema):
-                if ap[0] != '_':
-                    aps.append(ap)
-            if not aps:
-                continue
-        print(f"  /{'/'.join([str(x) for x in error.absolute_path])} --> {error.message}")
+        # Load the instance data
+        instance = url
+        resp = requests.get(instance)
+        data = resp.json()
 
-    if not errs:
-        print("  Validated!")
+        # Validate the instance against the schema
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", category=DeprecationWarning)
+            errs = validate_json(data, merged_schema)
+
+        # Collect validation results
+        validation_result = {
+            "url": url,
+            "schema": schema_name,
+            "validation_errors": [] if not errs else [str(err) for err in errs]
+        }
+        validation_results.append(validation_result)
+
+        # Update schema validation counts
+        schema_validation_counts[schema_name] = schema_validation_counts.get(schema_name, 0) + 1 if not errs else schema_validation_counts.get(schema_name, 0)
+
+    # Write validation results to a JSONL file
+    with open("validation_results.jsonl", "w") as jsonl_file:
+        for result in validation_results:
+            jsonl_file.write(json.dumps(result) + '\n')
+
+    # Write schema validation counts to a CSV file
+    with open("validation_summary.csv", "w", newline='') as csvfile:
+        fieldnames = ['schema', 'validated', 'non_validated']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        writer.writeheader()
+        for schema_name, count in schema_validation_counts.items():
+            writer.writerow({'schema': schema_name, 'validated': count, 'non_validated': len(urls) - count})
+
+    print("Validation completed. Results saved to validation_results.jsonl and validation_summary.csv.")

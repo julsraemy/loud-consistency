@@ -11,74 +11,82 @@ def parse_arguments():
     return parser.parse_args()
 
 def process_entries(input_file_path, line_range, num_lines_to_read, save_json=False):
-    output_directory = os.path.join(os.getcwd(), 'data')
+    output_directory = os.path.join(os.getcwd(), 'data')  # Output directory is "data" by default
     os.makedirs(output_directory, exist_ok=True)
+    os.makedirs(os.path.join(output_directory, 'json'), exist_ok=True)  # Create json directory
+
     main_ids = []
+
+    start_line, end_line = None, None
+
+    if line_range:
+        line_range_parts = line_range.split('-')
+        if len(line_range_parts) == 2:
+            start_line, end_line = map(int, line_range_parts)
+            start_line += 1  # Adjusting for 1-based indexing
+        elif len(line_range_parts) == 1:
+            start_line = int(line_range_parts[0]) + 1  # Adjusting for 1-based indexing
+            end_line = None
+        else:
+            print("Invalid line range format. Please use 'start-end' format or 'line' for a single line.")
+            return
+
     current_lines = 0
     file_index = 0
+    lux_ids_file = None
 
     with open(input_file_path, 'r', encoding='utf-8') as input_file:
         for idx, line in enumerate(input_file):
             if num_lines_to_read != -1 and current_lines >= num_lines_to_read:
                 break
 
-            if line_range:
-                start_line, end_line = map(int, line_range.split('-'))
-                start_line += 1  # Adjusting for 1-based indexing
-                if idx + 1 < start_line:
-                    continue
-                if idx + 1 > end_line:
-                    break
+            if start_line and idx + 1 < start_line:
+                continue
+
+            if end_line and idx + 1 > end_line:
+                break
 
             data = json.loads(line)
             main_id = data['json']['id']
-            data['json']['id'] = main_id  # Set the first ID as the main ID
-
-            # Get the content of the first ID to use as the file name
-            first_id_content = main_id.split('/')[-1]
 
             # Always save the main IDs
             main_ids.append(main_id)
             current_lines += 1
 
-            if current_lines % 100000 == 0:
-                # Write current main IDs to the text file. One file per 100,000 entries
+            if current_lines > 10000:
+                # Write current main IDs to the text file. One file per 10,000 entries
                 start_idx = idx - current_lines + 1 if line_range else idx - current_lines + 2
                 end_idx = idx if line_range else idx + 1
-
-                output_file_extension = 'txt'
-                lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.{output_file_extension}')
+                lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.txt')
                 with open(lux_ids_file_path, 'w', encoding='utf-8') as lux_ids_output_file:
                     for main_id in main_ids:
-                        # Write the content of the first ID as the file name
-                        first_id_content = main_id.split('/')[-1]
-                        lux_ids_output_file.write(f'{first_id_content}\n')
+                        lux_ids_output_file.write(main_id + '\n')
 
                 # Reset counters and open a new text file
                 main_ids = []
+                current_lines = 0
+                file_index += 1
 
-            # Create the JSON file for the entry if saving JSON
-            if save_json:
-                json_output_directory = os.path.join(os.getcwd(), 'data', 'json')
-                os.makedirs(json_output_directory, exist_ok=True)
-                output_file_path = os.path.join(json_output_directory, f'{first_id_content}.json')
-                with open(output_file_path, 'w', encoding='utf-8') as output_file:
-                    json.dump(data, output_file, indent=4)
-
-    # Write remaining main IDs to the text file
-    if main_ids:
-        start_idx = idx - current_lines + 1 if line_range else idx - current_lines + 2
-        end_idx = idx if line_range else idx + 1
-
-        output_file_extension = 'txt'
-        lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.{output_file_extension}')
-        with open(lux_ids_file_path, 'w', encoding='utf-8') as lux_ids_output_file:
-            for main_id in main_ids:
-                # Write the content of the first ID as the file name
-                first_id_content = main_id.split('/')[-1]
-                lux_ids_output_file.write(f'{first_id_content}\n')
+        # Write remaining main IDs to the text file
+        if main_ids:
+            start_idx = idx - current_lines + 1 if line_range else idx - current_lines + 2
+            end_idx = idx if line_range else idx + 1
+            lux_ids_file_path = os.path.join(output_directory, f'lux_ids_{start_idx}-{end_idx}.txt')
+            with open(lux_ids_file_path, 'w', encoding='utf-8') as lux_ids_output_file:
+                for main_id in main_ids:
+                    lux_ids_output_file.write(main_id + '\n')
 
     print(f"Successfully processed {current_lines} lines.")
+
+    if save_json:
+        # Save entries as JSON files
+        for idx, main_id in enumerate(main_ids):
+            data = json.loads(line)
+
+            # Create the JSON file for the entry
+            output_file_path = os.path.join(output_directory, 'json', f'{main_id.replace("/", "_")}.json')
+            with open(output_file_path, 'w', encoding='utf-8') as output_file:
+                json.dump(data, output_file, indent=4)
 
 if __name__ == "__main__":
     args = parse_arguments()
@@ -94,5 +102,4 @@ if __name__ == "__main__":
     else:
         print("Processing all available lines.")
 
-    # By default, save only as .txt
-    process_entries(args.input_file, args.line_range, args.num_lines, save_json=args.json_output)
+    process_entries(args.input_file, args.line_range, args.num_lines, args.json_output)
