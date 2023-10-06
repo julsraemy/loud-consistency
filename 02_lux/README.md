@@ -357,7 +357,7 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
 | **Physical Objects**      	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Places**                	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Provenance Activities** 	| :white_check_mark:                                                  	| :white_check_mark: 	| N/A                       	|
-| **Sets**                  	| :white_check_mark:                                                  	| :white_check_mark: 	| /referred_to_by/ - LUX specific hack to deal with HTML        	|
+| **Sets**                  	| :white_check_mark:                                                  	| :white_check_mark: 	| `/referred_to_by/` - LUX specific hack to deal with HTML        	|
 | **Textual Works**         	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Visual Works**          	| Add `shown_by`. Schema name (endpoint path) to be changed to `visual`?               	| :white_check_mark: 	| _TBD*_                      	|
 
