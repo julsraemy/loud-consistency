@@ -347,8 +347,6 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
 
 ### Summary
 
-By looking at the LUX data, we can see that there are internal `_links` properties which per the schemas shouldn't be allowed but these are still validated as allowed affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
-
 | **Endpoint**              	| **JSON Schema**                                                     	| **LA Example**     	| **Selected LUX instance** 	|
 |---------------------------	|---------------------------------------------------------------------	|--------------------	|---------------------------	|
 | **Concepts**              	| :white_check_mark:                                                  	| Add missing `ids`  	| :white_check_mark:        	|
@@ -373,6 +371,8 @@ Core Schema patterns to be verified:
 In summary, the main validation errors were due to:
 - For the Linked Art Endpoint examples: missing IDs
 - For LUX: `identified_by` --> `Identifier` as well as additional properties
+
+By looking at the LUX data, we can see that there are internal `_links` properties which per the schemas shouldn't be allowed but these are still validated as reasonable affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
 
 ## Unit to unit consistency (YCBA and YUAG)
 
