@@ -8,21 +8,21 @@ Initiatlly, there were several ideas on how consistency of Linked Open Usable Da
 
 Dropping Linked Art but focusing on IIIF Manifests V2.1 versus V3.0 against the [Presentation API Validator](https://presentation-validator.iiif.io/). For instance: Bodleian, Getty, Internet Archive (some of them have content negotiation implemented). Also how it relates to the cookbook recipes and which viewers support what. 
 
-## 2. LUX, Yale Collections Discovery
+## 2. LUX Data Consistency
 
-For the first action, a compressed slice of the LUX data has been provided. For the second and third action related purely to LUX, a CSV has been provided.
+For the first action, a compressed slice of the Linked Art data from LUX, Yale Collections Discovery has been provided. For the second and third action related purely to LUX, a CSV has been provided.
 
 ### Syntax
 
 - Initial idea: Syntax against the Linked Art Schema Definitions - Linked Art specification <-> Data [Automatable] - 1/24th records (LUX), the highest number of parallel processes. The JSONL file can be extracted using `lux_jsonl_extractor.py`. See [lux-ectractor](lux-extractor/README.md).
 
-The [Linked Art JSON Validator](https://github.com/linked-art/json-validator) will be leveraged. The `lux-schema-test.py` should be amended so it can parse several links or JSON-LD files. 
+A fork of the [Linked Art JSON Validator](https://github.com/julsraemy/json-validator) will be leveraged. The `lux-schema-test.py` should be amended so it can parse several links or JSON-LD files. 
 
-### Unit to Unit (YCBA and YUAG)
+### Unit to unit consistency (YCBA and YUAG)
 
 - Initial idea: Unit to unit consistency, e.g. YCBA & YUAG to check (same domain). To some extent, first by hand with a couple of instances, then Activity Streams endpoints or thumb drives.
 
-### LUX versus Getty Vocabularies
+### Consistency of concepts between LUX and the Getty Vocabularies 
 
 - Initial idea: LUX <-> external Linked Art that have the same concepts, that would be the Getty JSON-LD representation of the AAT, ULAN, TGN [To some extent, first by hand with a couple of instances]
 

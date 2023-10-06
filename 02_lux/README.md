@@ -1,6 +1,8 @@
 # 2. LUX Data Consistency
 
-## Testing the Linked Art JSON Validator
+## Syntax
+
+Testing the Linked Art JSON validator and the schemas with data coming from the [Linked Art API Endpoints](https://linked.art/api/1.0/endpoint/) and [LUX](https://lux.collections.yale.edu/).
 
 ### Concept
 
@@ -45,8 +47,17 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
 - https://lux.collections.yale.edu/data/text/00001cef-e016-418e-ba8d-84d2375d663a
 
 ```bash
------
+---
 Processing: https://lux.collections.yale.edu/data/text/00001cef-e016-418e-ba8d-84d2375d663a
-  Validated!
+  Validation failed. Validation errors:
+errs: [<ValidationError: "Additional properties are not allowed ('_links' was unexpected)">]
 
 ```
+
+## Unit to unit consistency (YCBA and YUAG)
+
+Work in progress
+
+## Consistency of concepts between LUX and the Getty Vocabularies 
+
+Work in progress
