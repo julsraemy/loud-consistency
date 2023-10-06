@@ -372,7 +372,7 @@ In summary, the main validation errors were due to:
 - For Linked Art Endpoint examples: missing IDs
 - For LUX data: `identified_by` --> `Identifier` and `/referred_to_by/` in `Set` instances
 
-By looking at the LUX data, we can see that there are internal `_links` properties which per the schemas shouldn't be allowed but these are still validated as reasonable affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
+By looking at the LUX data, we can see that there are additional `_links` properties which per the schemas shouldn't be allowed but these are still validated as reasonable affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
 
 ## Unit to unit consistency (YCBA and YUAG)
 
