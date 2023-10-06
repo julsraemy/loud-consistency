@@ -9,10 +9,10 @@
       6. [People](#people)
       7. [Physical Objects](#physical-objects)
       8. [Places](#places)
-      9. [Provenance Activities]
+      9. [Provenance Activities](#provenance-activities)
       10. [Sets]
       11. [Textual Works](#textual-work)
-      12. [Visual Works]
+      12. [Visual Works](#visual-works)
       13. [Summary](#summary)
 2. [Unit to unit consistency (YCBA and YUAG)](#unit-to-unit-consistency-ycba-and-yuag)
 3. [Consistency of concepts between LUX and the Getty Vocabularies](#consistency-of-concepts-between-lux-and-the-getty-vocabularies)
