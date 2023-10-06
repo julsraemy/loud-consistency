@@ -79,6 +79,8 @@ Processing: https://linked.art/example/digital/0
 
 #### LUX
 
+- https://lux.collections.yale.edu/data/digital/0000a6dc-87c3-40e9-b6fe-eac4b7858d9a
+
 ```bash
 -----------------------
 Processing: https://lux.collections.yale.edu/data/digital/0000a6dc-87c3-40e9-b6fe-eac4b7858d9a
