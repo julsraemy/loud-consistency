@@ -372,12 +372,16 @@ As the exercice was more to see if the patterns were correct, the internal `_lin
 | **Textual Works**         	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Visual Works**          	| Add `shown_by`. Schema name (endpoint path) to be changed to `visual`?               	| :white_check_mark: 	| _TBD*_                      	|
 
-_TBD*_: all of these instances had the same message warning regarding the use of `Identifier` in a pattern that seem correct according to the documentation. Below are some patterns that are directly informed by the [Linked Art core schema](https://linked.art/api/1.0/schema/core.json) which led to validation errors.
+_TBD*_: all of these instances had the same message warning regarding the use of `Identifier` within `identified_by` a pattern that seem correct according to the documentation. Below are some patterns that are directly informed by the [Linked Art core schema](https://linked.art/api/1.0/schema/core.json) which led to validation errors.
 
 Core Schema patterns to be verified:
 - `part_of` 
 - `identified_by`
 - `carried_out_by`
+
+In summary, the main validation errors were due to:
+- For the Linked Art Endpoint examples: missing IDs
+- For LUX: `identified_by` --> `Identifier` as well as additional properties
 
 ## Unit to unit consistency (YCBA and YUAG)
 
