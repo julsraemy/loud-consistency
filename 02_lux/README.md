@@ -10,7 +10,7 @@
       7. [Physical Objects](#physical-objects)
       8. [Places](#places)
       9. [Provenance Activities](#provenance-activities)
-      10. [Sets]
+      10. [Sets](#sets)
       11. [Textual Works](#textual-work)
       12. [Visual Works](#visual-works)
       13. [Summary](#summary)
