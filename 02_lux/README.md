@@ -1,8 +1,14 @@
 # 2. LUX Data Consistency
 
+1. [Syntax](#syntax)
+2. [Unit to unit consistency (YCBA and YUAG)](#unit-to-unit-consistency-ycba-and-yuag)
+3. [Consistency of concepts between LUX and the Getty Vocabularies](#consistency-of-concepts-between-lux-and-the-getty-vocabularies)
+
 ## Syntax
 
 Testing the Linked Art JSON validator and the schemas with data coming from the [Linked Art API Endpoints](https://linked.art/api/1.0/endpoint/) and [LUX](https://lux.collections.yale.edu/).
+
+The Python Script that was used is a adaption from the Linked Art JSON validator and is stored within a fork: https://github.com/julsraemy/json-validator/blob/master/schema-test.py
 
 ### Concept
 
