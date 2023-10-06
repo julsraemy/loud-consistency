@@ -53,10 +53,9 @@ Processing: https://linked.art/example/concept/0
 - https://lux.collections.yale.edu/data/concept/000052b6-a350-4bcb-afca-15dceb72920a
 
 ```bash
------------------------
+----------------------------------
 Processing: https://lux.collections.yale.edu/data/concept/000052b6-a350-4bcb-afca-15dceb72920a
-  Validation failed. Validation errors:
-  Error 1: / --> Additional properties are not allowed ('_links' was unexpected)
+  Validated!
 ```
 
 ### Digital Objects
@@ -86,7 +85,6 @@ Processing: https://linked.art/example/digital/0
 Processing: https://lux.collections.yale.edu/data/digital/0000a6dc-87c3-40e9-b6fe-eac4b7858d9a
   Validation failed. Validation errors:
   Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:mfhd:11743917', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Events
@@ -115,7 +113,6 @@ Processing: https://linked.art/example/event/0
 Processing: https://lux.collections.yale.edu/data/activity/00b7bec9-3f14-49c1-9b58-22e04196c6ad
   Validation failed. Validation errors:
   Error 1: /equivalent/0/type --> 'Activity' was expected
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Groups
@@ -142,10 +139,9 @@ Processing: https://linked.art/example/group/0
 - https://lux.collections.yale.edu/data/group/020318c8-df24-4999-a5b8-8d17fd79ed6e
 
 ```bash
------------------------
+----------------------------------
 Processing: https://lux.collections.yale.edu/data/group/020318c8-df24-4999-a5b8-8d17fd79ed6e
-  Validation failed. Validation errors:
-  Error 1: / --> Additional properties are not allowed ('_links' was unexpected)
+  Validated!
 ```
 
 ### People
@@ -173,11 +169,9 @@ Processing: https://linked.art/example/person/0
 - https://lux.collections.yale.edu/data/person/02051b6b-b245-43db-985a-e6bedc830444
 
 ```bash
------------------------
+----------------------------------
 Processing: https://lux.collections.yale.edu/data/person/02051b6b-b245-43db-985a-e6bedc830444
-  Validation failed. Validation errors:
-  Error 1: /born/timespan --> Additional properties are not allowed ('_seconds_since_epoch_begin_of_the_begin', '_seconds_since_epoch_end_of_the_end' were unexpected)
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
+  Validated!
 ```
 
 ### Physical Objects
@@ -206,7 +200,6 @@ Processing: https://linked.art/example/object/0
 Processing: https://lux.collections.yale.edu/data/object/020692b3-4dbf-4b72-9933-b34da851454a
   Validation failed. Validation errors:
   Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:mfhd:5161477', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Places
@@ -237,7 +230,6 @@ Processing: https://linked.art/example/place/0
 Processing: https://lux.collections.yale.edu/data/object/020692b3-4dbf-4b72-9933-b34da851454a
   Validation failed. Validation errors:
   Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:mfhd:5161477', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Provenance Activities
@@ -293,7 +285,6 @@ Processing: https://linked.art/example/set/1
 Processing: https://lux.collections.yale.edu/data/set/0234875b-a8a2-46ab-ac8e-18d635e6728f
   Validation failed. Validation errors:
   Error 1: /referred_to_by/0 --> {'type': 'LinguisticObject', 'content': 'To request items from this collection for use on site, please use the request links in the HTML version of this finding aid, available at https://hdl.handle.net/10079/fa/beinecke.micro', 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/03f4eb19-0611-4f31-8e09-fc111c52f898', 'type': 'Type', '_label': 'Access Statement', 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/b079998d-bb47-470a-ad7d-d938bd091f8a', 'type': 'Type', '_label': 'Brief Text'}]}], '_content_html': '<span class="lux_data">To request items from this collection for use on site, please use the request links in the HTML version of this finding aid, available at <a href="https://hdl.handle.net/10079/fa/beinecke.micro">https://hdl.handle.net/10079/fa/beinecke.micro</a></span>'} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Textual Work
@@ -324,7 +315,6 @@ Processing: https://linked.art/example/text/0.json
 Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18
   Validation failed. Validation errors:
   Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:14996707', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Visual Works
@@ -353,12 +343,11 @@ Processing: https://linked.art/example/visual/0
 Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18
   Validation failed. Validation errors:
   Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:14996707', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
-  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
 ### Summary
 
-As the exercice was more to see if the patterns were correct, the internal `_links` properties in LUX can be disregarded in this summary, even if this is still something to be discussed within the Linked Art community on how to serialise additional properties for internal purposes.
+By looking at the LUX data, we can see that there are internal `_links` properties which per the schemas shouldn't be allowed but these are still validated as allowed affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
 
 | **Endpoint**              	| **JSON Schema**                                                     	| **LA Example**     	| **Selected LUX instance** 	|
 |---------------------------	|---------------------------------------------------------------------	|--------------------	|---------------------------	|
@@ -366,7 +355,7 @@ As the exercice was more to see if the patterns were correct, the internal `_lin
 | **Digital Objects**       	| :white_check_mark:                                                  	| Add missing `id`   	| _TBD*_                      	|
 | **Events**                	| Add `Period` as accepted Class when using the `equivalent` property 	| :white_check_mark: 	| :white_check_mark:        	|
 | **Groups**                	| :white_check_mark:                                                  	| Add missing `ids`  	| :white_check_mark:        	|
-| **People**                	| :white_check_mark:                                                  	| Add missing `ids`  	| Unallowed properties in `born/timespan`                      	|
+| **People**                	| :white_check_mark:                                                  	| Add missing `ids`  	|  :white_check_mark:                    	|
 | **Physical Objects**      	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Places**                	| :white_check_mark:                                                  	| Add missing `ids`  	| _TBD*_                      	|
 | **Provenance Activities** 	| :white_check_mark:                                                  	| :white_check_mark: 	| N/A                       	|
