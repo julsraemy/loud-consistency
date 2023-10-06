@@ -360,17 +360,18 @@ As the exercice was more to see if the patterns were correct, the internal `_lin
 
 | **Endpoint**              	| **JSON Schema**                                                     	| **LA Example**     	| **Selected LUX instance** 	|
 |---------------------------	|---------------------------------------------------------------------	|--------------------	|---------------------------	|
-| **Concepts**              	| :white_check_mark:                                                  	| Add missing `ìds`  	| :white_check_mark:        	|
-| **Digital Objects**       	| :white_check_mark:                                                  	| Add missing `ìd`   	| TBD*                      	|
+| **Concepts**              	| :white_check_mark:                                                  	| Add missing `ids`  	| :white_check_mark:        	|
+| **Digital Objects**       	| :white_check_mark:                                                  	| Add missing `id`   	| TBD*                      	|
 | **Events**                	| Add `Period` as accepted Class when using the `equivalent` property 	| :white_check_mark: 	| :white_check_mark:        	|
-| **Groups**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| :white_check_mark:        	|
-| **People**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
-| **Physical Objects**      	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
-| **Places**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
+| **Groups**                	| :white_check_mark:                                                  	| Add missing `ids`  	| :white_check_mark:        	|
+| **People**                	| :white_check_mark:                                                  	| Add missing `ids`  	| TBD*                      	|
+| **Physical Objects**      	| :white_check_mark:                                                  	| Add missing `ids`  	| TBD*                      	|
+| **Places**                	| :white_check_mark:                                                  	| Add missing `ids`  	| TBD*                      	|
 | **Provenance Activities** 	| :white_check_mark:                                                  	| :white_check_mark: 	| N/A                       	|
 | **Sets**                  	| :white_check_mark:                                                  	| :white_check_mark: 	| :white_check_mark:        	|
-| **Textual Works**         	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
-| **Visual Works**          	| Add `shown_by` Schema name to be changed to `visual`?               	| :white_check_mark: 	| TBD*                      	|
+| **Textual Works**         	| :white_check_mark:                                                  	| Add missing `ids`  	| TBD*                      	|
+| **Visual Works**          	| Add `shown_by` 
+Schema name to be changed to `visual`?               	| :white_check_mark: 	| TBD*                      	|
 
 
 
