@@ -36,11 +36,11 @@ The Python Script that was used is a adaption from the Linked Art JSON validator
 
 #### Linked Art Endpoint Example
 
-- https://linked.art/example/concept/0.json
+- https://linked.art/example/concept/0
 
 ```bash
 -----------------------
-Processing: https://linked.art/example/concept/0.json
+Processing: https://linked.art/example/concept/0
   Validation failed. Validation errors:
   Error 1: /member_of/0 --> 'id' is a required property
   Error 2: /created_by/influenced_by/0 --> 'id' is a required property
