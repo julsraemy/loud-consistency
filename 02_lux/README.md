@@ -30,8 +30,9 @@ The Python Script that was used is a adaption from the Linked Art JSON validator
 
 ### Concepts
 
-- Documentation: https://linked.art/api/1.0/endpoint/concept/
-- Schema: https://linked.art/api/1.0/schema/concept.json 
+- Linked Art API Concept: https://linked.art/api/1.0/endpoint/concept/
+- JSON Schema: https://linked.art/api/1.0/schema/concept.json 
+- Schema documentation: https://linked.art/api/1.0/schema_docs/concept
 
 #### Linked Art Endpoint Example
 
@@ -60,9 +61,9 @@ Processing: https://lux.collections.yale.edu/data/concept/000052b6-a350-4bcb-afc
 
 ### Digital Objects
 
-- Documentation: https://linked.art/api/1.0/endpoint/digital_object/
-- Schema: https://linked.art/api/1.0/schema/digital.json
-
+- Linked Art API Digital Object: https://linked.art/api/1.0/endpoint/digital_object/
+- JSON Schema: https://linked.art/api/1.0/schema/digital.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/digital
 
 #### Linked Art Endpoint Example
 
@@ -88,8 +89,9 @@ Processing: https://lux.collections.yale.edu/data/digital/0000a6dc-87c3-40e9-b6f
 
 ### Events
 
-- Documentation: https://linked.art/api/1.0/endpoint/event/
-- Schema: https://linked.art/api/1.0/schema/event.json
+- Linked Art API Event: https://linked.art/api/1.0/endpoint/event/
+- JSON Schema: https://linked.art/api/1.0/schema/event.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/event
 
 #### Linked Art Endopint Example
 
@@ -116,8 +118,9 @@ Processing: https://lux.collections.yale.edu/data/activity/00b7bec9-3f14-49c1-9b
 
 ### Groups
 
-- Documentation: https://linked.art/api/1.0/endpoint/group/
-- Schema: https://linked.art/api/1.0/schema/group.json
+- Linked Art API Group: https://linked.art/api/1.0/endpoint/group/
+- JSON Schema: https://linked.art/api/1.0/schema/group.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/group
 
 #### Linked Art Endpoint Example
 
@@ -145,8 +148,9 @@ Processing: https://lux.collections.yale.edu/data/group/020318c8-df24-4999-a5b8-
 
 ### People
 
-- Documentation: https://linked.art/api/1.0/endpoint/person/
-- Schema: https://linked.art/api/1.0/schema/person.json
+- Linked Art API Person: https://linked.art/api/1.0/endpoint/person/
+- JSON Schema: https://linked.art/api/1.0/schema/person.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/person
 
 #### Linked Art Endpoint Example
 
@@ -176,8 +180,9 @@ Processing: https://lux.collections.yale.edu/data/person/02051b6b-b245-43db-985a
 
 ### Physical Objects
 
-- Documentation: https://linked.art/api/1.0/endpoint/physical_object/
-- Schema: https://linked.art/api/1.0/schema/object.json 
+- Linked Art API Physical Object Representation: https://linked.art/api/1.0/endpoint/physical_object/
+- JSON Schema: https://linked.art/api/1.0/schema/object.json 
+- Schema documentation: https://linked.art/api/1.0/schema_docs/object
 
 #### Linked Art Endpoint Example
 
@@ -204,8 +209,9 @@ Processing: https://lux.collections.yale.edu/data/object/020692b3-4dbf-4b72-9933
 
 ### Places
 
-- Documentation: https://linked.art/api/1.0/endpoint/place/
-- Schema: https://linked.art/api/1.0/schema/place.json
+- Linked Art API Place: https://linked.art/api/1.0/endpoint/place/
+- JSON Schema: https://linked.art/api/1.0/schema/place.json
+- Schema documenttion: https://linked.art/api/1.0/schema_docs/place
 
 #### Linked Art Endpoint Example
 
@@ -232,10 +238,67 @@ Processing: https://lux.collections.yale.edu/data/object/020692b3-4dbf-4b72-9933
   Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
+### Provenance Activities
+
+- Linked Art API Provenance Activity: https://linked.art/api/1.0/endpoint/provenance_activity/
+- JSON Schema: https://linked.art/api/1.0/schema/provenance.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/provenance
+
+#### Linked Art Endpoint Examples
+
+- https://linked.art/example/provenance/0
+
+```bash
+-----------------------
+Processing: https://linked.art/example/provenance/0
+  Validated!
+```
+
+- https://linked.art/example/provenance/1
+
+```bash
+-----------------------
+Processing: https://linked.art/example/provenance/1
+  Validated!
+```
+
+#### LUX
+
+N/A 
+
+### Sets
+
+- Linked Art API Set: https://linked.art/api/1.0/endpoint/set/
+- JSON Schema: https://linked.art/api/1.0/schema/set.json
+- Schema documentation: https://linked.art/api/1.0/schema_docs/set
+
+#### Linked Art Endpoint Example
+
+- https://linked.art/example/set/1
+
+```bash
+-----------------------
+Processing: https://linked.art/example/set/1
+  Validated!
+```
+
+#### LUX
+
+- https://lux.collections.yale.edu/data/set/0234875b-a8a2-46ab-ac8e-18d635e6728f
+
+```bash
+-----------------------
+Processing: https://lux.collections.yale.edu/data/set/0234875b-a8a2-46ab-ac8e-18d635e6728f
+  Validation failed. Validation errors:
+  Error 1: /referred_to_by/0 --> {'type': 'LinguisticObject', 'content': 'To request items from this collection for use on site, please use the request links in the HTML version of this finding aid, available at https://hdl.handle.net/10079/fa/beinecke.micro', 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/03f4eb19-0611-4f31-8e09-fc111c52f898', 'type': 'Type', '_label': 'Access Statement', 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/b079998d-bb47-470a-ad7d-d938bd091f8a', 'type': 'Type', '_label': 'Brief Text'}]}], '_content_html': '<span class="lux_data">To request items from this collection for use on site, please use the request links in the HTML version of this finding aid, available at <a href="https://hdl.handle.net/10079/fa/beinecke.micro">https://hdl.handle.net/10079/fa/beinecke.micro</a></span>'} is not valid under any of the given schemas
+  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
+```
+
 ### Textual Work
 
-- Documentation: https://linked.art/api/1.0/endpoint/textual_work/
-- Schema: https://linked.art/api/1.0/schema/text.json 
+- Linked Art API Textual Work: https://linked.art/api/1.0/endpoint/textual_work/
+- JSON Schema: https://linked.art/api/1.0/schema/text.json 
+- Schema documentation: https://linked.art/api/1.0/schema_docs/text
 
 #### Linked Art Endpoint Example
 
@@ -262,7 +325,38 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
   Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
 ```
 
+### Visual Works
+
+- Linked Art API: https://linked.art/api/1.0/endpoint/visual_work/
+- JSON Schema: https://linked.art/api/1.0/schema/image.json
+- Schema Documentation: https://linked.art/api/1.0/schema_docs/image
+
+#### Linked Art Endpoint Example
+
+- https://linked.art/example/visual/0
+
+```bash
+-----------------------
+Processing: https://linked.art/example/visual/0
+  Validation failed. Validation errors:
+  Error 1: / --> Additional properties are not allowed ('shown_by' was unexpected)
+```
+
+#### LUX
+
+- https://lux.collections.yale.edu/data/visual/02245fca-569b-4d09-a18c-84147ea0564a
+
+```bash
+-----------------------
+Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-cb41565b5a18
+  Validation failed. Validation errors:
+  Error 1: /identified_by/1 --> {'type': 'Identifier', 'content': 'ils:yul:14996707', 'attributed_by': [{'type': 'AttributeAssignment', 'carried_out_by': [{'id': 'https://lux.collections.yale.edu/data/group/d07b9b86-0a1e-4026-aa4c-8ecba8bbd9c9', 'type': 'Group', '_label': 'Yale University Library'}]}], 'classified_as': [{'id': 'https://lux.collections.yale.edu/data/concept/89630361-18a3-4c4b-bcd7-16894d95defd', 'type': 'Type', '_label': 'System-Assigned Number'}]} is not valid under any of the given schemas
+  Error 2: / --> Additional properties are not allowed ('_links' was unexpected)
+```
+
 ### Summary
+
+
 
 
 ## Unit to unit consistency (YCBA and YUAG)
