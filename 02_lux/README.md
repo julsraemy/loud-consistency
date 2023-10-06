@@ -369,8 +369,8 @@ Core Schema patterns to be verified:
 - `carried_out_by`
 
 In summary, the main validation errors were due to:
-- For the Linked Art Endpoint examples: missing IDs
-- For LUX: `identified_by` --> `Identifier` as well as additional properties
+- For Linked Art Endpoint examples: missing IDs
+- For LUX data: `identified_by` --> `Identifier` and `/referred_to_by/` in `Set` instances
 
 By looking at the LUX data, we can see that there are internal `_links` properties which per the schemas shouldn't be allowed but these are still validated as reasonable affordances - using underscores for internal reasons - by the Linked Art JSON Validator.
 
