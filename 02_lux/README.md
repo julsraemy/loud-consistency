@@ -356,6 +356,21 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
 
 ### Summary
 
+As the exercice was more to see if the patterns were correct, the internal `_links` properties in LUX can be disregarded in this summary, even if this is still something to be discussed within the Linked Art community on how to serialise additional properties for internal purposes.
+
+| **Endpoint**              	| **JSON Schema**                                                     	| **LA Example**     	| **Selected LUX instance** 	|
+|---------------------------	|---------------------------------------------------------------------	|--------------------	|---------------------------	|
+| **Concepts**              	| :white_check_mark:                                                  	| Add missing `ìds`  	| :white_check_mark:        	|
+| **Digital Objects**       	| :white_check_mark:                                                  	| Add missing `ìd`   	| TBD*                      	|
+| **Events**                	| Add `Period` as accepted Class when using the `equivalent` property 	| :white_check_mark: 	| :white_check_mark:        	|
+| **Groups**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| :white_check_mark:        	|
+| **People**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
+| **Physical Objects**      	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
+| **Places**                	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
+| **Provenance Activities** 	| :white_check_mark:                                                  	| :white_check_mark: 	| N/A                       	|
+| **Sets**                  	| :white_check_mark:                                                  	| :white_check_mark: 	| :white_check_mark:        	|
+| **Textual Works**         	| :white_check_mark:                                                  	| Add missing `ìds`  	| TBD*                      	|
+| **Visual Works**          	| Add `shown_by` Schema name to be changed to `visual`?               	| :white_check_mark: 	| TBD*                      	|
 
 
 
