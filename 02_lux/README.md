@@ -358,7 +358,7 @@ Processing: https://lux.collections.yale.edu/data/text/0000075c-f59a-419e-8d92-c
 
 ### Summary
 
-As the exercice was more to see if the patterns were correct, the internal `_links` properties in LUX can be ignored in this summary, even if this is still something to be discussed within the Linked Art community on how to serialise additional properties for internal purposes.
+As the exercice was more to see if the patterns were correct, the internal `_links` properties in LUX can be disregarded in this summary, even if this is still something to be discussed within the Linked Art community on how to serialise additional properties for internal purposes.
 
 | **Endpoint**              	| **JSON Schema**                                                     	| **LA Example**     	| **Selected LUX instance** 	|
 |---------------------------	|---------------------------------------------------------------------	|--------------------	|---------------------------	|
