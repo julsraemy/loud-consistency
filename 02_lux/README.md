@@ -1,19 +1,19 @@
 # 2. LUX Data Consistency
 
 1. [Syntax](#syntax)
-    1. [Investigation](#investigation)
-    2. [Concepts](#concepts)
-    3. [Digital Objects](#digital-objects)
-    4. [Events](#events)
-    5. [Groups](#groups)
-    6. [People](#people)
-    7. [Physical Objects](#physical-objects)
-    8. [Places](#places)
-    9. [Provenance Activities]
-    10. [Sets]
-    11. [Textual Works](#textual-work)
-    12. [Visual Works]
-    13. [Summary](#summary)
+      1. [Investigation](#investigation)
+      2. [Concepts](#concepts)
+      3. [Digital Objects](#digital-objects)
+      4. [Events](#events)
+      5. [Groups](#groups)
+      6. [People](#people)
+      7. [Physical Objects](#physical-objects)
+      8. [Places](#places)
+      9. [Provenance Activities]
+      10. [Sets]
+      11. [Textual Works](#textual-work)
+      12. [Visual Works]
+      13. [Summary](#summary)
 2. [Unit to unit consistency (YCBA and YUAG)](#unit-to-unit-consistency-ycba-and-yuag)
 3. [Consistency of concepts between LUX and the Getty Vocabularies](#consistency-of-concepts-between-lux-and-the-getty-vocabularies)
 
