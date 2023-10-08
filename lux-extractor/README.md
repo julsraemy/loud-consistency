@@ -57,7 +57,7 @@ python3 lux_jsonl_extractor.py -i export_full_0.jsonl -n 100
 
 ## Content
 
-One LUX JSONL represents one 24th of the whole LUX dataset. The JSON files are also not exactly the same as what is available online through the API and are much more verbose. 
+One LUX JSONL represents one 24th of the whole LUX dataset. The JSON files extracted from JSONL are much more verbose and are also not exactly the same as what is available online, where `_links` from the [Hypertext Application Language (HAL)](https://datatracker.ietf.org/doc/draft-kelly-json-hal/10/) are being leveraged.
 
 Compare the last few lines of  `https://lux.collections.yale.edu/data/concept/000025c1-9521-440a-b637-516598cd856c` with: 
 
