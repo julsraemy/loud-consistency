@@ -1,4 +1,4 @@
-# Linked Open Usable Data (LOUD) Consistency
+# LOUD Consistency
 
 Initiatlly, there were several ideas on how consistency of Linked Open Usable Data (LOUD), namely that [International Image Interoperability Framework](https://iiif.io) (IIIF) and [Linked Art](https://linked.art) data could be verified according to several factors (syntax, patterns, compliance to the APIs). This repository is an attempt to document the various actions undertaken in the context of a PhD Thesis on [LOUD for Cultural Heritage](https://phd.julsraemy.ch) in terms of data validation and consistency.
 
