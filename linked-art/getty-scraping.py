@@ -69,6 +69,6 @@ for term in tqdm(df['vocab'], desc="Processing terms"):
 
 # Save term labels to a CSV file
 term_labels_df = pd.DataFrame(term_labels, columns=['URL', 'Label', 'Entity'])
-term_labels_df.to_csv('term_labels.csv', index=False)
+term_labels_df.to_csv('intersection-ycba-yuag-vocab.csv', index=False)
 
 logging.info("Scraping completed")
