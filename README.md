@@ -39,7 +39,8 @@ Testing how consistent are IIIF resources within LUX (V2.1 and 3.0) with the hel
 ### Scripts
 
 - **validate_urls.sh**: A shell script to validate IIIF Presentation API URLs using the Presentation API Validator.
-- **lux-iiif-analysis.py**: A Python script to analyze IIIF resources within LUX, checking for consistency between versions 2.1 and 3.0.
-- **lux-iiif-results.jsonl**: The output JSONL file containing the results of the IIIF analysis.
-- **lux-iiif.csv**: A CSV file summarizing the IIIF analysis results.
-- **iiif_analysis_results.png**: A PNG image visualizing the results of the IIIF analysis.
+- **lux-iiif-analysis.py**: A Python script to create data visualisations based on the JSONL output file.
+
+## Additional Information
+
+For more detailed information on each script and its usage, refer to the respective README files located in the subdirectories.
