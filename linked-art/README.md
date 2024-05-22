@@ -378,12 +378,8 @@ By looking at the LUX data, we can see that there are additional `_links` proper
 
 ### Unit to unit consistency (YCBA and YUAG)
 
-Work in progress
+The Yale Center for British Art (YCBA) and the Yale University Art Gallery (YUAG) use 8,188 and 10,056 Getty vocabulary terms, respectively, with a combined total of 17,111 terms and 1,133 terms present in both collections. The analysis also reveals that ULAN is the most used vocabulary, particularly for referencing people, with 13,149 terms. AAT, on the other hand, is used less frequently, with only 199 terms. This highlights ULAN's prominence in referencing people within LUX for these particular units. 
 
 ### Consistency of concepts between LUX and the Getty Vocabularies 
 
-Work in progress
-
-## IIIF
-
-Work in progress
+When comparing terms like "goddesses" (`aat:300343852`) between the AAT and LUX endpoints, differences emerge. The Getty Linked Art representation follows the data model loosely and includes SKOS properties not allowed by the Linked Art API. In contrast, LUX strictly adheres to the concept schema. This indicates that external institutions using Getty Vocabularies need to do so with caution, ensuring alignment with Linked Art standards.
