@@ -1,55 +1,64 @@
 #!/bin/bash
 
-CSV_FILE="lux-iiif.csv"
-TEMP_CSV_FILE="temp_$CSV_FILE"
+# Prompt for inputs
+read -p "Enter the unit: " UNIT
+read -p "Enter the version (e.g., 2.1 or 3.0): " VERSION
+read -p "Enter the base URL: " BASE_URL
+read -p "Enter the starting identifier: " START_ID
+read -p "Enter the desired number of valid manifests: " DESIRED_COUNT
+
 SERVER_URL="http://localhost:8080/validate"
 OUTPUT_JSONL="lux-iiif-results.jsonl"
 
 # Ensure the output file is empty before writing new results
 > "$OUTPUT_JSONL"
 
-# Add a newline character to the end of the CSV file to ensure the last line is processed
-cp "$CSV_FILE" "$TEMP_CSV_FILE"
-echo "" >> "$TEMP_CSV_FILE"
+# Initialize counter for progress tracking and valid manifests
+counter=0
+valid_count=0
+current_id=$START_ID
 
-# Read the CSV file line by line, including the header
-{
-    read
-    while IFS=, read -r unit version url
-    do
-        if [ -n "$unit" ] && [ -n "$version" ] && [ -n "$url" ]; then
-            # Trim any trailing carriage return or newline characters from the URL
-            url=$(echo "$url" | tr -d '\r\n')
+# Function to log messages with timestamps
+log_message() {
+    echo "[$(date)] $1"
+}
 
-            echo "Processing Unit: $unit, Version: $version, URL: $url"  # Debug statement
+while [ $valid_count -lt $DESIRED_COUNT ]; do
+    url="${BASE_URL}${current_id}"
+    log_message "Processing Unit: $UNIT, Version: $VERSION, URL: $url"
 
-            # Validate the URL
-            response=$(curl -s "${SERVER_URL}?version=${version}&url=${url}")
+    # Validate the URL
+    response=$(curl -s -o /dev/null -w "%{http_code}" "${SERVER_URL}?version=${VERSION}&url=${url}")
 
-            # Debugging statement to show raw response
-            echo "Raw response for URL $url: $response"
+    if [ "$response" -eq 404 ]; then
+        log_message "URL $url returned 404, skipping."
+        current_id=$((current_id + 1))
+        continue
+    fi
 
-            # Check if response is empty
-            if [ -z "$response" ]; then
-                response=$(jq -n --arg url "$url" --arg version "$version" --arg unit "$unit" '{"okay": 0, "warnings": ["Failed to fetch or invalid response"], "error": "Empty response", "errorList": [], "url": $url, "version": $version, "unit": $unit}')
-            else
-                # Remove all newlines and extra spaces from the JSON response to make it a single line
-                response=$(echo "$response" | jq --arg version "$version" --arg unit "$unit" '. + {version: $version, unit: $unit}' | jq -c .)
-            fi
+    response=$(curl -s "${SERVER_URL}?version=${VERSION}&url=${url}")
 
-            # Debugging statement to show processed response
-            echo "Processed response for URL $url: $response"
+    if [ -z "$response" ]; then
+        response=$(jq -n --arg url "$url" --arg version "$VERSION" --arg unit "$UNIT" '{"okay": 0, "warnings": ["Failed to fetch or invalid response"], "error": "Empty response", "errorList": [], "url": $url, "version": $version, "unit": $unit}')
+    else
+        response=$(echo "$response" | jq --arg version "$VERSION" --arg unit "$UNIT" '. + {version: $version, unit: $unit}' | jq -c .)
+    fi
 
-            # Write the response to the JSONL file (without pretty-printing)
-            echo "$response" >> "$OUTPUT_JSONL"
+    log_message "Processed response for URL $url: $response"
 
-            # Debugging statement to confirm write
-            echo "Written response for URL $url to $OUTPUT_JSONL"
-        fi
-    done
-} < "$TEMP_CSV_FILE"
+    echo "$response" >> "$OUTPUT_JSONL"
 
-# Remove the temporary CSV file
-rm "$TEMP_CSV_FILE"
+    log_message "Written response for URL $url to $OUTPUT_JSONL"
 
-echo "Validation complete, results saved to $OUTPUT_JSONL"
+    valid_count=$((valid_count + 1))
+
+    # Calculate progress percentage
+    counter=$((counter + 1))
+    progress=$((counter * 100 / DESIRED_COUNT))
+    log_message "Progress: $progress%"
+
+    # Increment the current identifier
+    current_id=$((current_id + 1))
+done
+
+log_message "Validation complete, results saved to $OUTPUT_JSONL"
