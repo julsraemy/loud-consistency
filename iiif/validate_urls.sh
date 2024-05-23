@@ -10,9 +10,6 @@ read -p "Enter the desired number of valid manifests: " DESIRED_COUNT
 SERVER_URL="http://localhost:8080/validate"
 OUTPUT_JSONL="lux-iiif-results.jsonl"
 
-# Ensure the output file is empty before writing new results
-> "$OUTPUT_JSONL"
-
 # Initialize counter for progress tracking and valid manifests
 counter=0
 valid_count=0
@@ -46,6 +43,7 @@ while [ $valid_count -lt $DESIRED_COUNT ]; do
 
     log_message "Processed response for URL $url: $response"
 
+    # Append the new response to the JSONL file
     echo "$response" >> "$OUTPUT_JSONL"
 
     log_message "Written response for URL $url to $OUTPUT_JSONL"
