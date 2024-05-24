@@ -14,52 +14,50 @@ with open(jsonl_file_path, 'r') as file:
 # Convert data to a pandas DataFrame
 df = pd.DataFrame(data)
 
-# Statistics
-total_manifests = len(df)
-valid_manifests = df[df['okay'] == 1]
-invalid_manifests = df[df['okay'] == 0]
-valid_with_warnings = valid_manifests[valid_manifests['warnings'].apply(lambda x: len(x) > 0)]
-valid_without_warnings = valid_manifests[valid_manifests['warnings'].apply(lambda x: len(x) == 0)]
+# Ensure that all entries in the 'warnings' column are lists
+df['warnings'] = df['warnings'].apply(lambda x: x if isinstance(x, list) else [])
 
-# Print statistics
-print(f"Total manifests: {total_manifests}")
-print(f"Valid manifests: {len(valid_manifests)}")
-print(f"Invalid manifests: {len(invalid_manifests)}")
-print(f"Valid manifests with warnings: {len(valid_with_warnings)}")
-print(f"Valid manifests without warnings: {len(valid_without_warnings)}")
+# Identify 404 responses
+df['status'] = df.apply(lambda row: 'HTTP 404' if '404' in row['error'] else ('Valid Manifest' if row['okay'] == 1 else 'Invalid Manifest'), axis=1)
+
+# Determine warnings
+df['warnings_status'] = df['warnings'].apply(lambda x: 'With Warnings' if len(x) > 0 else 'Without Warnings')
+
+# Combine status and warnings for valid manifests
+df['combined_status'] = df.apply(lambda row: row['status'] if row['status'] != 'Valid Manifest' else ('Valid Manifest (with warnings)' if row['warnings_status'] == 'With Warnings' else 'Valid Manifest'), axis=1)
 
 # Group by unit and version
-grouped_by_unit = df.groupby('unit').size()
-grouped_by_version = df.groupby('version').size()
-grouped_by_unit_and_version = df.groupby(['unit', 'version']).size()
+grouped = df.groupby(['unit', 'version', 'combined_status']).size().unstack(fill_value=0).reset_index()
 
-# Plot statistics
-fig, axs = plt.subplots(2, 2, figsize=(14, 10))
+# Create a new combined unit and version column for plotting
+grouped['unit_version'] = grouped['unit'] + ' (' + grouped['version'] + ')'
 
-# Total manifests by unit
-axs[0, 0].bar(grouped_by_unit.index, grouped_by_unit.values, color='skyblue')
-axs[0, 0].set_title('Total Manifests by Unit')
-axs[0, 0].set_ylabel('Count')
+# Define colors
+colors = {
+    'Valid Manifest': '#10700F',  # Dark green
+    'Valid Manifest (with warnings)': '#71AF64',  # Light green
+    'Invalid Manifest': '#FF261D',  # Red
+    'HTTP 404': '#A9A9A9'  # Dark grey
+}
 
-# Total manifests by version
-axs[0, 1].bar(grouped_by_version.index, grouped_by_version.values, color='lightgreen')
-axs[0, 1].set_title('Total Manifests by Version')
-axs[0, 1].set_ylabel('Count')
+# Plot the stacked bar chart
+fig, ax = plt.subplots(figsize=(14, 8))
 
-# Valid and invalid manifests
-df['status'] = df['okay'].apply(lambda x: 'Valid' if x == 1 else 'Invalid')
-grouped_by_status = df.groupby('status').size()
-axs[1, 0].bar(grouped_by_status.index, grouped_by_status.values, color=['lightgreen', 'salmon'])
-axs[1, 0].set_title('Valid vs Invalid Manifests')
-axs[1, 0].set_ylabel('Count')
+bottom = [0] * len(grouped)
 
-# Valid manifests with and without warnings
-valid_with_without_warnings = pd.Series([len(valid_with_warnings), len(valid_without_warnings)],
-                                        index=['With Warnings', 'Without Warnings'])
-axs[1, 1].bar(valid_with_without_warnings.index, valid_with_without_warnings.values, color=['orange', 'lightblue'])
-axs[1, 1].set_title('Valid Manifests with/without Warnings')
-axs[1, 1].set_ylabel('Count')
+for status in ['Valid Manifest', 'Valid Manifest (with warnings)', 'Invalid Manifest', 'HTTP 404']:
+    if status in grouped.columns:
+        values = grouped[status].values
+    else:
+        values = [0] * len(grouped)
+    ax.bar(grouped['unit_version'], values, bottom=bottom, label=status, color=colors[status])
+    bottom = [i + j for i, j in zip(bottom, values)]
 
+ax.set_title('Validation Results by Unit and IIIF Presentation API Version')
+ax.set_ylabel('Count')
+ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.savefig('iiif_analysis_results.png')
 plt.show()
